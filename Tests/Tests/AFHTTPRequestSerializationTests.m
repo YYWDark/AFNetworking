@@ -68,7 +68,6 @@
 - (void)testThatAFHTTPRequestSerializationSerializesPOSTRequestsProperly {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://example.com"]];
     request.HTTPMethod = @"POST";
-
     NSURLRequest *serializedRequest = [self.requestSerializer requestBySerializingRequest:request withParameters:@{@"key":@"value"} error:nil];
     NSString *contentType = serializedRequest.allHTTPHeaderFields[@"Content-Type"];
 
@@ -94,6 +93,7 @@
 }
 
 - (void)testThatAFHTTPRequestSerialiationSerializesQueryParametersCorrectly {
+    /** originalRequest httpmethod default is GET*/
     NSURLRequest *originalRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://example.com"]];
     NSURLRequest *serializedRequest = [self.requestSerializer requestBySerializingRequest:originalRequest withParameters:@{@"key":@"value"} error:nil];
 
