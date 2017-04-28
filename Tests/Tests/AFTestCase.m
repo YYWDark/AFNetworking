@@ -35,6 +35,7 @@
 #pragma mark -
 
 - (NSURL *)baseURL {
+    /** NSProcessInfo 返回当前进程的信息*/
     NSDictionary *environment = [[NSProcessInfo processInfo] environment];
     return [NSURL URLWithString:environment[@"HTTPBIN_BASE_URL"] ?: @"https://httpbin.org"];
 }

@@ -88,12 +88,15 @@
             dataTaskWithRequest:[self bigImageURLRequest]
             uploadProgress:nil
             downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+                NSLog(@"进度表示形式1：%f", downloadProgress.fractionCompleted);
                 if (downloadProgress.fractionCompleted == 1.0) {
                     [expectation fulfill];
                 }
             }
-            completionHandler:nil];
-    
+            completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                NSLog(@"error == %@",error);
+            }];
+
     [task resume];
     [self waitForExpectationsWithCommonTimeout];
 }
@@ -203,7 +206,9 @@
                     downloadProgress:nil
                     completionHandler:nil];
             dispatch_sync(serial_queue, ^{
+                
                 XCTAssertFalse([taskIDs containsObject:@(task.taskIdentifier)]);
+                NSLog(@"task == %ld  currentThread == %@",task.taskIdentifier,[NSThread currentThread]);
                 [taskIDs addObject:@(task.taskIdentifier)];
             });
             [task cancel];

@@ -436,16 +436,16 @@
 			isa = PBXGroup;
 			children = (
 				298D7C811BC2C88F00FD3B3E /* AFHTTPRequestSerializationTests.m */,
+				E91164641DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m */,
 				298D7C821BC2C88F00FD3B3E /* AFHTTPResponseSerializationTests.m */,
+				298D7C8F1BC2C88F00FD3B3E /* AFURLSessionManagerTests.m */,
 				298D7C831BC2C88F00FD3B3E /* AFHTTPSessionManagerTests.m */,
 				298D7C851BC2C88F00FD3B3E /* AFJSONSerializationTests.m */,
 				298D7C881BC2C88F00FD3B3E /* AFPropertyListResponseSerializerTests.m */,
-				E91164641DA6A7AE00DFFF56 /* AFPropertyListRequestSerializerTests.m */,
 				29D3413E1C20D46400A7D266 /* AFCompoundResponseSerializerTests.m */,
 				1BF9F95F1C87832B00F1F35A /* AFImageResponseSerializerTests.m */,
 				298D7C871BC2C88F00FD3B3E /* AFNetworkReachabilityManagerTests.m */,
 				298D7C891BC2C88F00FD3B3E /* AFSecurityPolicyTests.m */,
-				298D7C8F1BC2C88F00FD3B3E /* AFURLSessionManagerTests.m */,
 			);
 			name = "AFNetworking Tests";
 			sourceTree = "<group>";
