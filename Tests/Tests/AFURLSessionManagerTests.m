@@ -82,7 +82,7 @@
 
 - (void)testDataTaskDoesReportDownloadProgress {
     NSURLSessionDataTask *task;
-
+    //下载测试
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Progress should equal 1.0"];
     task = [self.localManager
             dataTaskWithRequest:[self bigImageURLRequest]
@@ -109,7 +109,7 @@
             uploadProgress:nil
             downloadProgress:nil
             completionHandler:nil];
-
+    
         NSProgress *progress = [self.localManager downloadProgressForTask:task];
         [self keyValueObservingExpectationForObject:progress keyPath:@"fractionCompleted"
                                             handler:^BOOL(NSProgress  *observedProgress, NSDictionary * _Nonnull change) {
@@ -137,6 +137,7 @@
     [self waitForExpectationsWithCommonTimeout];
 }
 
+//上传测试
 - (void)testUploadTaskDoesReportProgress {
     NSMutableString *payload = [NSMutableString stringWithString:@"AFNetworking"];
     while ([payload lengthOfBytesUsingEncoding:NSUTF8StringEncoding] < 20000) {
@@ -356,7 +357,9 @@
     NSURLSessionTask *task = [self.localManager uploadTaskWithRequest:[self _delayURLRequest]
                                                         fromData:[NSData data]
                                                         progress:nil
-                                               completionHandler:nil];
+                                               completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                                                   
+                                               }];
     [self _testSwizzlingForTask:task];
     [task cancel];
 }
@@ -439,6 +442,7 @@
 #pragma mark - private
 
 - (void)_testResumeNotificationForTask:(NSURLSessionTask *)task {
+    //该方法监听一个通知,如果在规定时间内正确收到通知则测试通过
     [self expectationForNotification:AFNetworkingTaskDidResumeNotification
                               object:nil
                              handler:nil];
